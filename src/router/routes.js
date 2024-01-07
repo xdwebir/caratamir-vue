@@ -78,6 +78,13 @@ const routes = [
     ]
   },
   {
+    path: '/operator/ordershistory',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/operator/OrdersHistory.vue') }
+    ]
+  },
+  {
     path: '/operator/waitingorders',
     component: () => import('layouts/MainLayout.vue'),
     children: [

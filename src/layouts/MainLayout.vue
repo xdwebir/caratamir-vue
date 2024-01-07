@@ -17,6 +17,7 @@
         <q-route-tab to="/" label="خانه" />
         <q-route-tab v-if="isLogin" to="/dashboard" label="داشبرد" />
         <q-route-tab v-if="isOperator" to="/operator/waitingorders" label="اختصاص خدمت رسان" />
+        <q-route-tab v-if="isOperator" to="/operator/ordershistory" label="تاریخچه سفارشات" />
         <q-route-tab v-if="isAccountant" to="/accountant/confirmpayment" label="تایید فیش پرداخت" />
         <q-route-tab v-if="isProvider" to="/provider/addpayment" label="پرداخت" />
         <q-route-tab v-if="isProvider" to="/provider/ordershistory" label="تاریخچه سفارشات" />
@@ -40,6 +41,7 @@
       <RouterLink v-if="isLogin" to="/user/editprofile">پروفایل کاربری</RouterLink><br v-if="isLogin"/>
       <RouterLink v-if="isAccountant" to="/accountant/confirmpayment">تایید فیش پرداخت</RouterLink><br v-if="isAccountant"/>
       <RouterLink v-if="isOperator" to="/operator/waitingorders">اختصاص خدمت رسان</RouterLink><br v-if="isOperator"/>
+      <RouterLink v-if="isOperator" to="/operator/ordershistory">تاریخچه سفارشات</RouterLink><br v-if="isOperator"/>
       <RouterLink v-if="isProvider" to="/provider/editprofile">پروفایل خدمات</RouterLink><br v-if="isProvider"/>
       <RouterLink v-if="isProvider" to="/provider/addpayment">پرداخت</RouterLink><br v-if="isProvider"/>
       <RouterLink v-if="isProvider" to="/provider/ordershistory">تاریچه سفارشات</RouterLink><br v-if="isProvider"/>
