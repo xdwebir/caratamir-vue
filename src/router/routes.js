@@ -22,6 +22,13 @@ const routes = [
     ]
   },
   {
+    path: '/accountant/paymentshistory',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/accountant/PaymentsHistory.vue') }
+    ]
+  },
+  {
     path: '/accountant/confirmpayment',
     component: () => import('layouts/MainLayout.vue'),
     children: [
