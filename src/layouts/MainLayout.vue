@@ -5,7 +5,7 @@
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+            <img src="favicon.png">
           </q-avatar>
           کاراتعمیر
         </q-toolbar-title>
@@ -35,24 +35,26 @@
     </q-header>
 
     <q-drawer class="shadow-5 sidebar" show-if-above v-model="rightDrawerOpen" side="right" bordered>
-      <h2 align="center">کاراتعمیر</h2>
-      <hr/>
-      <RouterLink to="/">خانه</RouterLink><br/>
-      <RouterLink v-if="isLogin" to="/dashboard">داشبرد</RouterLink><br v-if="isLogin"/>
-      <RouterLink v-if="isLogin" to="/user/editprofile">پروفایل کاربری</RouterLink><br v-if="isLogin"/>
-      <RouterLink v-if="isAccountant" to="/accountant/confirmpayment">تایید فیش پرداخت</RouterLink><br v-if="isAccountant"/>
-      <RouterLink v-if="isAccountant" to="/accountant/paymentshistory">تاریخچه پرداخت ها</RouterLink><br v-if="isAccountant"/>
-      <RouterLink v-if="isOperator" to="/operator/waitingorders">اختصاص خدمت رسان</RouterLink><br v-if="isOperator"/>
-      <RouterLink v-if="isOperator" to="/operator/ordershistory">تاریخچه سفارشات</RouterLink><br v-if="isOperator"/>
-      <RouterLink v-if="isProvider" to="/provider/editprofile">پروفایل خدمات</RouterLink><br v-if="isProvider"/>
-      <RouterLink v-if="isProvider" to="/provider/addpayment">پرداخت</RouterLink><br v-if="isProvider"/>
-      <RouterLink v-if="isProvider" to="/provider/ordershistory">تاریچه سفارشات</RouterLink><br v-if="isProvider"/>
-      <RouterLink v-if="isProvider" to="/provider/paymentshistory">تاریچه پرداخت ها</RouterLink><br v-if="isProvider"/>
-      <RouterLink v-if="isProvider" to="/provider/pricedefinelist">اعلام قیمت</RouterLink><br v-if="isProvider"/>
-      <RouterLink v-if="isCustomer" to="/customer/addorder">ثبت سفارش</RouterLink><br v-if="isCustomer"/>
-      <RouterLink v-if="isCustomer" to="/customer/orderslist">لیست سفارشات</RouterLink><br v-if="isCustomer"/>
-      <RouterLink v-if="!isLogin" to="/login">ورود</RouterLink><br  v-if="!isLogin"/>
-      <RouterLink v-if="!isLogin" to="/register">ثبت نام</RouterLink><br  v-if="!isLogin"/>
+      <q-img class="q-ma-md" width="250px" align="center" src="img/logo-blue.png"  spinner-color="primary" spinner-size="82px" />
+      <hr />
+      <RouterLink to="/">خانه</RouterLink><br />
+      <RouterLink v-if="isLogin" to="/dashboard">داشبرد</RouterLink><br v-if="isLogin" />
+      <RouterLink v-if="isLogin" to="/user/editprofile">پروفایل کاربری</RouterLink><br v-if="isLogin" />
+      <RouterLink v-if="isAccountant" to="/accountant/confirmpayment">تایید فیش پرداخت</RouterLink><br
+        v-if="isAccountant" />
+      <RouterLink v-if="isAccountant" to="/accountant/paymentshistory">تاریخچه پرداخت ها</RouterLink><br
+        v-if="isAccountant" />
+      <RouterLink v-if="isOperator" to="/operator/waitingorders">اختصاص خدمت رسان</RouterLink><br v-if="isOperator" />
+      <RouterLink v-if="isOperator" to="/operator/ordershistory">تاریخچه سفارشات</RouterLink><br v-if="isOperator" />
+      <RouterLink v-if="isProvider" to="/provider/editprofile">پروفایل خدمات</RouterLink><br v-if="isProvider" />
+      <RouterLink v-if="isProvider" to="/provider/addpayment">پرداخت</RouterLink><br v-if="isProvider" />
+      <RouterLink v-if="isProvider" to="/provider/ordershistory">تاریچه سفارشات</RouterLink><br v-if="isProvider" />
+      <RouterLink v-if="isProvider" to="/provider/paymentshistory">تاریچه پرداخت ها</RouterLink><br v-if="isProvider" />
+      <RouterLink v-if="isProvider" to="/provider/pricedefinelist">اعلام قیمت</RouterLink><br v-if="isProvider" />
+      <RouterLink v-if="isCustomer" to="/customer/addorder">ثبت سفارش</RouterLink><br v-if="isCustomer" />
+      <RouterLink v-if="isCustomer" to="/customer/orderslist">لیست سفارشات</RouterLink><br v-if="isCustomer" />
+      <RouterLink v-if="!isLogin" to="/login">ورود</RouterLink><br v-if="!isLogin" />
+      <RouterLink v-if="!isLogin" to="/register">ثبت نام</RouterLink><br v-if="!isLogin" />
       <RouterLink v-if="isLogin" to="/logout">خروج</RouterLink>
 
     </q-drawer>
@@ -112,7 +114,8 @@ export default {
   display: block;
   color: black;
 }
-.sidebar a:hover{
-  color:blue;
+
+.sidebar a:hover {
+  color: blue;
 }
 </style>

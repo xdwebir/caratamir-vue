@@ -1,9 +1,9 @@
 <template>
-  <h2>داشبرد من</h2>
-
-  <h4>{{ user.first_name }}</h4>
-  <h4>{{ user.last_name }}</h4>
-  <h4>{{ user.mobile }}</h4>
+  <div class="q-ma-xl">
+    <h2>داشبرد من</h2>
+    <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+    <h4>{{ user.mobile }}</h4>
+  </div>
 </template>
 
 <script>
@@ -25,14 +25,14 @@ export default defineComponent({
   mounted() {
     let token = JSON.parse(localStorage.getItem('token'))
     axios.request({
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-        method: "GET",
-        url: baseurl.url + 'v1/user'
-      }).then(response => {
-        this.user = response.data[0];
-      });
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      method: "GET",
+      url: baseurl.url + 'v1/user'
+    }).then(response => {
+      this.user = response.data[0];
+    });
   }
 })
 </script>
