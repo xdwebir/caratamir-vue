@@ -36,6 +36,10 @@ export default {
         { name: 'address', label: 'آدرس', field: 'address' },
         { name: 'status', label: 'وضعیت', field: 'status' },
         { name: 'service_name', label: 'خدمت', field: 'service_name' },
+        { name: 'provider_address', label: 'آدرس خدمت رسان', field: 'provider_address' },
+        { name: 'provider_mobile', label: 'موبایل خدمت رسان', field: 'provider_mobile' },
+        { name: 'provider_first_name', label: 'نام خدمت رسان', field: 'provider_first_name' },
+        { name: 'provider_last_name', label: 'نام خانوادگی خدمت رسان', field: 'provider_last_name' },
         { name: 'price', label: 'قیمت', field: 'price' },
       ],
       rows: [],
@@ -62,6 +66,10 @@ export default {
             address: rows[row].address,
             status: rows[row].status,
             service_name: rows[row].service_name,
+            provider_address: rows[row].provider_address,
+            provider_mobile: rows[row].provider_mobile,
+            provider_first_name: rows[row].provider_first_name,
+            provider_last_name: rows[row].provider_last_name,
             price: rows[row].price
           });
         }
@@ -92,6 +100,10 @@ export default {
             address: rows[row].address,
             status: rows[row].status,
             service_name: rows[row].service_name,
+            provider_address: rows[row].provider_address,
+            provider_mobile: rows[row].provider_mobile,
+            provider_first_name: rows[row].provider_first_name,
+            provider_last_name: rows[row].provider_last_name,
             price: rows[row].price
           });
         }
@@ -122,6 +134,10 @@ export default {
           address: rows[row].address,
           status: rows[row].status,
           service_name: rows[row].service_name,
+          provider_address: rows[row].provider_address,
+          provider_mobile: rows[row].provider_mobile,
+          provider_first_name: rows[row].provider_first_name,
+          provider_last_name: rows[row].provider_last_name,
           price: rows[row].price
         });
       }
