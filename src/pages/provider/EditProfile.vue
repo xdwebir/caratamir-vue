@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="q-pa-md col-sm-6">
-      <div v-if="val_profile" class=" bg-blue-grey-1 q-pa-xl">
+      <div v-if="val_profile" class="q-ma-md shadow-5 q-pa-xl">
         <div class="row">
           <h3>پروفایل خدمت رسانی فعلی</h3>
           <div class="col-sm-6 q-pa-xs">
@@ -20,14 +20,20 @@
             ساعت پایان {{ val_end_time }}
           </div>
         </div>
-        <div class="q-pa-xs">
+        <div class="row">
+          <div class="col-sm-6 q-pa-xs">
             نوع خدمت {{ val_service_name }}
+          </div>
+          <div class="col-sm-6 q-pa-xs">
+            آدرس: {{ val_address }}
+          </div>
         </div>
+
       </div>
-      <div class=" bg-blue-grey-1 q-pa-xl">
+      <div class="q-ma-md shadow-5 q-pa-md">
         <h3>ویرایش پروفایل خدمت رسانی</h3>
         <div class="row">
-          <div class="col-sm-6 q-pa-xl">
+          <div class="col-sm-6 q-pa-md">
             <select v-model="state_id" id="state_id" name="state_id" @change="CityList(state_id);">
               <option value="0">لطفا استان را انتخاب نمایید</option>
               <option value="1">تهران</option>
@@ -66,7 +72,7 @@
               استان
             </label>
           </div>
-          <div class="col-sm-6 q-pa-xl">
+          <div class="col-sm-6 q-pa-md">
             <select v-model="city_id" name="city_id" id="city_id" v-html="city_options" label="شهر">
 
             </select>
@@ -76,24 +82,28 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-6 q-pa-xl">
+          <div class="col-sm-6 q-pa-md">
             <input v-model="start_time" type="time" id="start_time" name="start_time">
             <label for="start_time">شروع خدمت رسانی</label>
           </div>
-          <div class="col-sm-6 q-pa-xl">
+          <div class="col-sm-6 q-pa-md">
             <input v-model="end_time" type="time" id="end_time" name="end_time">
             <label for="end_time">پایان خدمت رسانی</label>
           </div>
         </div>
-        <div class="q-pa-xl">
+        <div class="q-pa-md">
 
           <select v-model="service_id" id="service_id" name="service_id">
-
           </select>
           <label class="form-label" for="service_id">
             نوع خدمت
           </label>
         </div>
+        <div class="q-pa-md">
+          <input v-model="address" type="text" id="address" name="address">
+          <label for="address">آدرس</label>
+        </div>
+
         <q-btn class="full-width q-ma-md" @click="updateProfile" color="secondary" label="به روزرسانی" />
       </div>
     </div>
@@ -120,12 +130,22 @@ export default {
       service_id: '',
       start_time: '',
       end_time: '',
+      address: '',
       val_state_name: '',
       val_city_name: '',
       val_service_name: '',
       val_start_time: '',
       val_end_time: '',
-      val_profile: false
+      val_address: '',
+      val_profile: false,
+      center: [40, 40],
+      projection: "EPSG:4326",
+      zoom: 8,
+      rotation: 0,
+      currentCenter: "",
+      currentZoom: "",
+      currentRotation: "",
+      currentResolution: "",
     };
   },
   mounted() {
@@ -157,6 +177,7 @@ export default {
         this.val_start_time = $profile.start_time;
         this.val_end_time = $profile.end_time;
         this.val_service_name = $profile.service_name;
+        this.val_address = $profile.address;
         this.val_profile = true;
       }
     });
@@ -170,6 +191,16 @@ export default {
     }
   },
   methods: {
+    resolutionChanged(event) {
+      this.currentResolution = event.target.getResolution();
+      this.currentZoom = event.target.getZoom();
+    },
+    centerChanged(event) {
+      this.currentCenter = event.target.getCenter();
+    },
+    rotationChanged(event) {
+      this.currentRotation = event.target.getRotation();
+    },
     async updateProfile() {
       //TODO change function to store profile
       let token = JSON.parse(localStorage.getItem('token'))
@@ -181,7 +212,8 @@ export default {
         city_id: this.city_id,
         service_id: this.service_id,
         start_time: this.start_time,
-        end_time: this.end_time
+        end_time: this.end_time,
+        address: this.address
       },
         {
           headers: {
@@ -198,7 +230,7 @@ export default {
           alert(error.response.data.message);
         });
       if (status == 1) {
-        this.$router.push({ path: '/dashboard' })
+        this.$router.push({ path: '/' })
       }
     },
     CityList(state) {
@@ -1332,7 +1364,8 @@ export default {
 #end_time,
 #service_id,
 #state_id,
-#city_id {
+#city_id,
+#address {
   width: 100%;
   background-color: #f2f2f2;
   height: 50px;

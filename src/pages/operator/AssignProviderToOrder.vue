@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6 q-pa-md">
-      <div class="bg-grey-1">
+      <div class="shadow-5 q-pa-md">
         <h4 class="text-center">اطلاعات سفارش مشتری</h4>
         <div class="row">
           <div class="col-sm-6 q-pa-sm">
@@ -36,6 +36,7 @@
           <div class="col-sm-6 q-pa-sm">
           </div>
         </div>
+        <q-btn class="full-width" color="negative" label="حذف سفارش" @click="deleteOrder" />
       </div>
     </div>
     <div class="col-sm-3"></div>
@@ -53,21 +54,12 @@
       </template>
 
       <template v-slot:pagination="scope">
-
-
         <q-btn icon="chevron_right" color="grey-8" round dense flat :disable="scope.isLastPage"
           @click="scope.nextPage; nextPage();" />
-
-        <q-btn v-if="scope.pagesNumber > 2" icon="last_page" color="grey-8" round dense flat :disable="scope.isLastPage"
-          @click="scope.lastPage" />
-
-        <q-btn v-if="scope.pagesNumber > 2" icon="first_page" color="grey-8" round dense flat :disable="scope.isFirstPage"
-          @click="scope.firstPage" />
-
         <q-btn icon="chevron_left" color="grey-8" round dense flat :disable="scope.isFirstPage"
           @click="scope.prevPage; prevPage();" />
-
       </template>
+
     </q-table>
   </div>
 </template>
@@ -106,6 +98,7 @@ export default {
         { name: 'service_name', label: 'خدمت', field: 'service_name' },
         { name: 'start_time', label: 'ساعت شروع', field: 'start_time' },
         { name: 'end_time', label: 'ساعت پایان', field: 'end_time' },
+        { name: 'address', label: 'آدرس', field: 'address' },
         { name: 'actions', label: 'اقدام' }
       ],
       rows: [],
@@ -151,6 +144,7 @@ export default {
           service_name: rows[row].service_name,
           start_time: rows[row].start_time,
           end_time: rows[row].end_time,
+          address: rows[row].address,
         });
       }
       this.pagination = {
@@ -162,6 +156,31 @@ export default {
     });
   },
   methods: {
+    async deleteOrder() {
+      let status = 0;
+      let confirmed = confirm("آیا سفارش انتخابی حذف شود؟");
+      if (confirmed) {
+        let token = JSON.parse(localStorage.getItem('token'))
+        await axios.post(baseurl.url + 'v1/operator/deleteorder/' + this.$route.params.id, {},
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': "Bearer " + token
+            }
+          }
+        )
+          .then(function (response) {
+            status = response.data.status;
+          })
+          .catch(function (error) {
+            console.log(error.response);
+          });
+        if (status == 1) {
+          this.$router.push({ path: '/operator/waitingorders' })
+        }
+      }
+    },
     async assignProviderToOrder($provider_id, $order_id) {
       let status = 0;
       let confirmed = confirm("آیا خدمت رسان انتخابی مورد تایید است؟");
@@ -216,6 +235,7 @@ export default {
             service_name: rows[row].service_name,
             start_time: rows[row].start_time,
             end_time: rows[row].end_time,
+            address: rows[row].address,
           });
         }
         this.pagination = {
@@ -249,6 +269,7 @@ export default {
             service_name: rows[row].service_name,
             start_time: rows[row].start_time,
             end_time: rows[row].end_time,
+            address: rows[row].address,
           });
         }
         this.pagination = {

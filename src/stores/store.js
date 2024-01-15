@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 export const useBaseURL = defineStore('baseurl', {
   state: () => ({
     url: "http://localhost/caratamir/public/api/",
+    // url: "https://api.caratamir.ir/api/",
   }),
 });
 
@@ -16,6 +17,3 @@ export const is = defineStore('access', {
     accountant: JSON.parse(localStorage.getItem('isAccountant')),
   }),
 });
-
-
-

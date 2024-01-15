@@ -40,6 +40,7 @@ export default {
         { name: 'city_name', label: 'شهر', field: 'city_name' },
         { name: 'provider_id', label: 'آیدی خدمت رسان', field: 'provider_id' },
         { name: 'provider_mobile', label: 'موبایل خدمت رسان', field: 'provider_mobile' },
+        { name: 'provider_address', label: 'آدرس خدمت رسان', field: 'provider_address' },
       ],
       rows: [],
       latestResult: {},
@@ -69,6 +70,7 @@ export default {
             city_name: rows[row].city_name,
             provider_id: rows[row].provider_id,
             provider_mobile: rows[row].provider_mobile,
+            provider_address: rows[row].provider_address,
           });
         }
         this.pagination = {
@@ -102,6 +104,7 @@ export default {
             city_name: rows[row].city_name,
             provider_id: rows[row].provider_id,
             provider_mobile: rows[row].provider_mobile,
+            provider_address: rows[row].provider_address,
           });
         }
         this.pagination = {
@@ -135,6 +138,7 @@ export default {
           city_name: rows[row].city_name,
           provider_id: rows[row].provider_id,
           provider_mobile: rows[row].provider_mobile,
+          provider_address: rows[row].provider_address,
         });
       }
       this.pagination = {

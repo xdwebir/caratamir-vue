@@ -147,7 +147,7 @@ export default {
           alert(error.response.data.message);
         });
       if (status == 1) {
-        this.$router.push({ path: '/dashboard' })
+        this.$router.push({ path: '/' })
       }
     },
     CityList(state) {

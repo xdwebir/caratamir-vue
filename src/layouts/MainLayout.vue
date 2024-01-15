@@ -15,7 +15,7 @@
 
       <q-tabs align="left">
         <q-route-tab to="/" label="خانه" />
-        <q-route-tab v-if="isLogin" to="/dashboard" label="داشبرد" />
+        <!-- <q-route-tab v-if="isLogin" to="/dashboard" label="داشبرد" /> -->
         <q-route-tab v-if="isOperator" to="/operator/waitingorders" label="اختصاص خدمت رسان" />
         <q-route-tab v-if="isOperator" to="/operator/ordershistory" label="تاریخچه سفارشات" />
         <q-route-tab v-if="isAccountant" to="/accountant/confirmpayment" label="تایید فیش پرداخت" />
@@ -38,7 +38,8 @@
       <q-img class="q-ma-md" width="250px" align="center" src="img/logo-blue.png"  spinner-color="primary" spinner-size="82px" />
       <hr />
       <RouterLink to="/">خانه</RouterLink><br />
-      <RouterLink v-if="isLogin" to="/dashboard">داشبرد</RouterLink><br v-if="isLogin" />
+      <a href="https://blog.caratamir.ir">مقالات</a><br />
+      <!-- <RouterLink v-if="isLogin" to="/dashboard">داشبرد</RouterLink><br v-if="isLogin" /> -->
       <RouterLink v-if="isLogin" to="/user/editprofile">پروفایل کاربری</RouterLink><br v-if="isLogin" />
       <RouterLink v-if="isAccountant" to="/accountant/confirmpayment">تایید فیش پرداخت</RouterLink><br
         v-if="isAccountant" />
@@ -56,7 +57,8 @@
       <RouterLink v-if="!isLogin" to="/login">ورود</RouterLink><br v-if="!isLogin" />
       <RouterLink v-if="!isLogin" to="/register">ثبت نام</RouterLink><br v-if="!isLogin" />
       <RouterLink v-if="isLogin" to="/logout">خروج</RouterLink>
-
+      <hr/>
+      <h5 align="center">پشتیبانی - ۰۹۰۳۲۲۱۱۹۰۳</h5>
     </q-drawer>
 
     <q-page-container>
