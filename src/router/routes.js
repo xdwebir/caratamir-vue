@@ -50,6 +50,13 @@ const routes = [
     ]
   },
   {
+    path: '/customer/dashboard',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/customer/CustomerDashboard.vue') }
+    ]
+  },
+  {
     path: '/provider/pricedefinelist',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -103,6 +110,13 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/operator/AssignProviderToOrder.vue') }
+    ]
+  },
+  {
+    path: '/operator/assignprovidertoorderedit/:id',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/operator/AssignProviderToOrderEdit.vue') }
     ]
   },
   {

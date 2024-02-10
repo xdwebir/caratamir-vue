@@ -31,7 +31,7 @@ export default {
         rowsNumber: 1
       },
       columns: [
-        { name: 'id', label: 'آيدی', field: 'id' },
+        { name: 'id', label: 'شماره سفارش', field: 'id' },
         { name: 'mobile', label: 'موبایل', field: 'mobile' },
         { name: 'address', label: 'آدرس', field: 'address' },
         { name: 'status', label: 'وضعیت', field: 'status' },

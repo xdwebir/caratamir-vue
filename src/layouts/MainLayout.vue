@@ -26,6 +26,7 @@
         <q-route-tab v-if="isProvider" to="/provider/pricedefinelist" label="اعلام قیمت" />
         <q-route-tab v-if="isProvider" to="/provider/editprofile" label="پروفایل خدمات" />
         <q-route-tab v-if="isLogin" to="/user/editprofile" label="پروفایل کاربری" />
+        <q-route-tab v-if="isCustomer" to="/customer/dashboard" label="داشبرد" />
         <q-route-tab v-if="isCustomer" to="/customer/addorder" label="ثبت سفارش" />
         <q-route-tab v-if="isCustomer" to="/customer/orderslist" label="لیست سفارشات" />
         <q-route-tab v-if="!isLogin" to="/login" label="ورود" />
@@ -52,6 +53,7 @@
       <RouterLink v-if="isProvider" to="/provider/ordershistory">تاریچه سفارشات</RouterLink><br v-if="isProvider" />
       <RouterLink v-if="isProvider" to="/provider/paymentshistory">تاریچه پرداخت ها</RouterLink><br v-if="isProvider" />
       <RouterLink v-if="isProvider" to="/provider/pricedefinelist">اعلام قیمت</RouterLink><br v-if="isProvider" />
+      <RouterLink v-if="isCustomer" to="/customer/dashboard">داشبرد</RouterLink><br v-if="isCustomer" />
       <RouterLink v-if="isCustomer" to="/customer/addorder">ثبت سفارش</RouterLink><br v-if="isCustomer" />
       <RouterLink v-if="isCustomer" to="/customer/orderslist">لیست سفارشات</RouterLink><br v-if="isCustomer" />
       <RouterLink v-if="!isLogin" to="/login">ورود</RouterLink><br v-if="!isLogin" />

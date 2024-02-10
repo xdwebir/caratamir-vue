@@ -67,6 +67,7 @@
           </label>
         </div>
 
+
         <q-btn @click="addOrder" class="full-width q-ma-md" color="secondary" label="ثبت سفارش" />
       </div>
     </div>
@@ -75,6 +76,7 @@
 </template>
 
 <script>
+
 import axios from 'axios';
 import { useBaseURL } from 'stores/store'
 const baseurl = useBaseURL()
@@ -130,7 +132,8 @@ export default {
         city_id: this.city_id,
         service_id: this.service_id,
         mobile: this.mobile,
-        address: this.address
+        address: this.address,
+
       },
         {
           headers: {
@@ -147,7 +150,7 @@ export default {
           alert(error.response.data.message);
         });
       if (status == 1) {
-        this.$router.push({ path: '/' })
+        this.$router.push({ path: '/customer/dashboard' })
       }
     },
     CityList(state) {

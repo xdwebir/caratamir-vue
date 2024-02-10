@@ -3,6 +3,14 @@
     <q-table :rows-per-page-options="rowsPerPageOptions" title="تاریخچه سفارشات" v-model:pagination="pagination"
       :rows="rows" :columns="columns" row-key="name">
 
+      <template v-slot:body-cell-actions="props">
+        <q-td :props="props">
+          <q-btn @click="goPage(props.row.id)">
+            ویرایش
+          </q-btn>
+        </q-td>
+      </template>
+
       <template v-slot:pagination="scope">
         <q-btn icon="chevron_right" color="grey-8" round dense flat :disable="scope.isLastPage"
           @click="scope.nextPage; nextPage();" />
@@ -31,9 +39,9 @@ export default {
         rowsNumber: 1
       },
       columns: [
-        { name: 'id', label: 'آيدی', field: 'id' },
-        { name: 'mobile', label: 'موبایل', field: 'mobile' },
-        { name: 'address', label: 'آدرس', field: 'address' },
+        { name: 'id', label: 'آيدی مشتری', field: 'id' },
+        { name: 'mobile', label: 'موبایل مشتری', field: 'mobile' },
+        { name: 'address', label: 'آدرس مشتری', field: 'address' },
         { name: 'status', label: 'وضعیت', field: 'status' },
         { name: 'service_name', label: 'خدمت', field: 'service_name' },
         { name: 'price', label: 'قیمت', field: 'price' },
@@ -41,12 +49,16 @@ export default {
         { name: 'provider_id', label: 'آیدی خدمت رسان', field: 'provider_id' },
         { name: 'provider_mobile', label: 'موبایل خدمت رسان', field: 'provider_mobile' },
         { name: 'provider_address', label: 'آدرس خدمت رسان', field: 'provider_address' },
+        { name: 'actions', label: 'اقدام', field: 'actions' },
       ],
       rows: [],
       latestResult: {},
     }
   },
   methods: {
+    goPage($page){
+      this.$router.push({ path: '/operator/assignprovidertoorderedit/'+$page });
+    },
     nextPage() {
       let token = JSON.parse(localStorage.getItem('token'))
       axios.request({

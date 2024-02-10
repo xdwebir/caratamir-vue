@@ -213,7 +213,7 @@ export default {
         service_id: this.service_id,
         start_time: this.start_time,
         end_time: this.end_time,
-        address: this.address
+        address: this.address,
       },
         {
           headers: {
