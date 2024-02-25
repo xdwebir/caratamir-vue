@@ -4,7 +4,7 @@
     <div class="q-pa-md col-sm-6">
       <div v-if="val_profile" class="q-ma-md shadow-5 q-pa-xl">
         <div class="row">
-          <h3>پروفایل خدمت رسانی فعلی</h3>
+          <h4 align="center" class="q-ma-sm">پروفایل خدمت رسانی فعلی</h4>
           <div class="col-sm-6 q-pa-xs">
             استان {{ val_state_name }}
           </div>
@@ -22,7 +22,7 @@
         </div>
         <div class="row">
           <div class="col-sm-6 q-pa-xs">
-            نوع خدمت {{ val_service_name }}
+            خدمات شما {{ val_services_name }}
           </div>
           <div class="col-sm-6 q-pa-xs">
             آدرس: {{ val_address }}
@@ -31,7 +31,7 @@
 
       </div>
       <div class="q-ma-md shadow-5 q-pa-md">
-        <h3>ویرایش پروفایل خدمت رسانی</h3>
+        <h4 class="q-ma-sm">ویرایش پروفایل خدمت رسانی</h4>
         <div class="row">
           <div class="col-sm-6 q-pa-md">
             <select v-model="state_id" id="state_id" name="state_id" @change="CityList(state_id);">
@@ -93,11 +93,13 @@
         </div>
         <div class="q-pa-md">
 
-          <select v-model="service_id" id="service_id" name="service_id">
+          <!-- <select v-model="service_id" id="service_id" name="service_id">
           </select>
           <label class="form-label" for="service_id">
             نوع خدمت
-          </label>
+          </label> -->
+
+          <q-select filled v-model="services_multiple" multiple :options="services_options" label="خدمات شما"  />
         </div>
         <div class="q-pa-md">
           <input v-model="address" type="text" id="address" name="address">
@@ -127,25 +129,19 @@ export default {
       service_name: '',
       state_id: '',
       city_id: '',
-      service_id: '',
+      services_id: [],
+      services_multiple: [],
+      services_options:[],
       start_time: '',
       end_time: '',
       address: '',
       val_state_name: '',
       val_city_name: '',
-      val_service_name: '',
+      val_services_name: '',
       val_start_time: '',
       val_end_time: '',
       val_address: '',
       val_profile: false,
-      center: [40, 40],
-      projection: "EPSG:4326",
-      zoom: 8,
-      rotation: 0,
-      currentCenter: "",
-      currentZoom: "",
-      currentRotation: "",
-      currentResolution: "",
     };
   },
   mounted() {
@@ -160,7 +156,10 @@ export default {
     }).then(response => {
       let services = response.data;
       for (let s in services) {
-        document.getElementById("service_id").append(new Option(services[s].name, services[s].id));
+        this.services_options.push({
+          label: services[s].name,
+          value: services[s].id
+        });
       }
     });
     axios.request({
@@ -176,31 +175,28 @@ export default {
         this.val_city_name = $profile.city_name;
         this.val_start_time = $profile.start_time;
         this.val_end_time = $profile.end_time;
-        this.val_service_name = $profile.service_name;
+        this.val_services_name = $profile.services_name;
         this.val_address = $profile.address;
         this.val_profile = true;
       }
     });
   },
   watch: {
-    state_id($newStateID) {
+    state_id(newStateID) {
       this.state_name = document.getElementById('state_id').options[document.getElementById('state_id').selectedIndex].text;
     },
-    city_id($newCityID) {
+    city_id(newCityID) {
       this.city_name = document.getElementById('city_id').options[document.getElementById('city_id').selectedIndex].text;
+    },
+    services_multiple(newMultiple){
+      this.services_id = [];
+      for(let m in newMultiple){
+        this.services_id.push(newMultiple[m].value)
+      }
+      this.services_id = JSON.stringify(this.services_id)
     }
   },
   methods: {
-    resolutionChanged(event) {
-      this.currentResolution = event.target.getResolution();
-      this.currentZoom = event.target.getZoom();
-    },
-    centerChanged(event) {
-      this.currentCenter = event.target.getCenter();
-    },
-    rotationChanged(event) {
-      this.currentRotation = event.target.getRotation();
-    },
     async updateProfile() {
       //TODO change function to store profile
       let token = JSON.parse(localStorage.getItem('token'))
@@ -210,7 +206,7 @@ export default {
         city_name: this.city_name,
         state_id: this.state_id,
         city_id: this.city_id,
-        service_id: this.service_id,
+        services_id: this.services_id,
         start_time: this.start_time,
         end_time: this.end_time,
         address: this.address,

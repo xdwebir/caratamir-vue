@@ -31,7 +31,7 @@ export default {
         rowsNumber: 1
       },
       columns: [
-        { name: 'id', label: 'آيدی', field: 'id' },
+        { name: 'id', label: 'شماره پرداخت', field: 'id' },
         { name: 'date', label: 'تاریخ و ساعت', field: 'date' },
         { name: 'amount', label: 'مبلغ', field: 'amount' },
         { name: 'tracking_code', label: 'کد رهگیری', field: 'tracking_code' },

@@ -95,7 +95,7 @@ export default {
         { name: 'state_name', label: 'استان', field: 'state_name' },
         { name: 'last_name', label: 'نام', field: 'last_name' },
         { name: 'first_name', label: 'نام خانوادگی', field: 'first_name' },
-        { name: 'service_name', label: 'خدمت', field: 'service_name' },
+        { name: 'services_name', label: 'خدمات', field: 'services_name' },
         { name: 'start_time', label: 'ساعت شروع', field: 'start_time' },
         { name: 'end_time', label: 'ساعت پایان', field: 'end_time' },
         { name: 'address', label: 'آدرس', field: 'address' },
@@ -131,8 +131,8 @@ export default {
       method: "GET",
       url: baseurl.url + 'v1/operator/availableproviders/' + this.$route.params.id
     }).then(response => {
-      let rows = response.data.data;
-      this.latestResult = response.data;
+      let rows = response.data;
+      //this.latestResult = response.data;
       for (let row in rows) {
         this.rows.push({
           id: rows[row].id,
@@ -141,17 +141,17 @@ export default {
           state_name: rows[row].state_name,
           last_name: rows[row].last_name,
           first_name: rows[row].first_name,
-          service_name: rows[row].service_name,
+          services_name: rows[row].services_name,
           start_time: rows[row].start_time,
           end_time: rows[row].end_time,
           address: rows[row].address,
         });
       }
-      this.pagination = {
-        page: response.data.current_page,
-        rowsPerPage: response.data.per_page,
-        rowsNumber: response.data.total
-      };
+      // this.pagination = {
+      //   page: response.data.current_page,
+      //   rowsPerPage: response.data.per_page,
+      //   rowsNumber: response.data.total
+      // };
 
     });
   },
@@ -232,7 +232,7 @@ export default {
             state_name: rows[row].state_name,
             last_name: rows[row].last_name,
             first_name: rows[row].first_name,
-            service_name: rows[row].service_name,
+            services_name: rows[row].services_name,
             start_time: rows[row].start_time,
             end_time: rows[row].end_time,
             address: rows[row].address,
@@ -266,7 +266,7 @@ export default {
             state_name: rows[row].state_name,
             last_name: rows[row].last_name,
             first_name: rows[row].first_name,
-            service_name: rows[row].service_name,
+            services_name: rows[row].services_name,
             start_time: rows[row].start_time,
             end_time: rows[row].end_time,
             address: rows[row].address,

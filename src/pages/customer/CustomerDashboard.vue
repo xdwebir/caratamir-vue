@@ -42,18 +42,18 @@ const baseurl = useBaseURL()
 export default {
   data() {
     return {
-      customer_mobile:'',
-      customer_city:'',
-      customer_address:'',
-      status:'',
-      price:'',
-      order_id:'',
-      operator_mobile:'',
-      operator_name:'',
-      provider_mobile:'',
-      provider_name:'',
-      provider_address:'',
-      service_name:''
+      customer_mobile: '',
+      customer_city: '',
+      customer_address: '',
+      status: '',
+      price: '',
+      order_id: '',
+      operator_mobile: '',
+      operator_name: '',
+      provider_mobile: '',
+      provider_name: '',
+      provider_address: '',
+      service_name: ''
     }
   },
   methods: {
@@ -70,18 +70,18 @@ export default {
     }).then(response => {
       let rows = response.data.data;
       for (let row in rows) {
-        this.customer_mobile = rows[row].customer_mobile ;
-        this.customer_city = rows[row].customer_city ;
-        this.customer_address = rows[row].customer_address ;
-        this.status = rows[row].status ;
-        this.price = rows[row].price ;
-        this.order_id = rows[row].order_id ;
-        this.operator_mobile = rows[row].operator_mobile ;
+        this.customer_mobile = rows[row].customer_mobile;
+        this.customer_city = rows[row].customer_city;
+        this.customer_address = rows[row].customer_address;
+        this.status = rows[row].status;
+        this.price = rows[row].price;
+        this.order_id = rows[row].order_id;
+        this.operator_mobile = rows[row].operator_mobile;
         this.operator_name = rows[row].operator_first_name + " " + rows[row].operator_last_name;
-        this.provider_mobile = rows[row].provider_mobile ;
-        this.provider_name = rows[row].provider_first_name + " "+ rows[row].provider_last_name ;
-        this.provider_address = rows[row].provider_address ;
-        this.service_name = rows[row].service_name ;
+        this.provider_mobile = rows[row].provider_mobile;
+        this.provider_name = rows[row].provider_first_name + " " + rows[row].provider_last_name;
+        this.provider_address = rows[row].provider_address;
+        this.service_name = rows[row].service_name;
       }
 
     });

@@ -7,11 +7,11 @@
         لطفا بدهی خود را به کارت ۶۲۱۹۸۶۱۹۲۷۴۰۶۳۳۹ به نام محمد تهمتن واریز نمایید.
       </div>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-xl-6 col-12">
           <h4>تاریخ</h4>
           <q-date v-model="date" calendar="persian"></q-date>
         </div>
-        <div class="col-sm-6">
+        <div class="col-xl-6 col-12">
           <h4>ساعت</h4>
           <q-time class="on-right" v-model="time" format24h></q-time>
         </div>

@@ -5,7 +5,7 @@
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
-            <img src="favicon.png">
+            <img src="/favicon.png">
           </q-avatar>
           کاراتعمیر
         </q-toolbar-title>
@@ -36,7 +36,7 @@
     </q-header>
 
     <q-drawer class="shadow-5 sidebar" show-if-above v-model="rightDrawerOpen" side="right" bordered>
-      <q-img class="q-ma-md" width="250px" align="center" src="img/logo-blue.png"  spinner-color="primary" spinner-size="82px" />
+      <q-img class="q-ma-md" width="250px" align="center" src="/img/logo-blue.png"  spinner-color="primary" spinner-size="82px" />
       <hr />
       <RouterLink to="/">خانه</RouterLink><br />
       <a href="https://blog.caratamir.ir">مقالات</a><br />
